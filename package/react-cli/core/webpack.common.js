@@ -3,7 +3,6 @@ const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const resolveApp = require('../utils/paths')
@@ -15,7 +14,8 @@ const commonConfig = (isProduction) => {
     target: ['browserslist'],
     entry: resolveApp('index.js'),
     output: {
-      filename: 'js/bundle.js',
+      filename: 'js/[name].[chunkhash:6].bundle.js',
+      chunkFilename: 'js/[name].[contenthash:6].chunk.js',
       path: resolveApp('dist'),
       publicPath: '/'
     },
@@ -96,11 +96,6 @@ const commonConfig = (isProduction) => {
       ]
     },
     optimization: {
-      minimizer: [
-        new TerserPlugin({
-          extractComments: false
-        })
-      ],
       splitChunks: {
         chunks: 'all',
         cacheGroups: {
@@ -111,7 +106,7 @@ const commonConfig = (isProduction) => {
           },
         }
       },
-      // runtimeChunk: 'single',
+      runtimeChunk: 'single',
     },
     plugins: [
       new CleanWebpackPlugin(),
