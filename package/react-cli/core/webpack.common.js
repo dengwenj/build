@@ -4,6 +4,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const PurgeCSSWebpackPlugin = require('purgecss-webpack-plugin')
+const glob = require('glob')
 
 const resolveApp = require('../utils/paths')
 const production = require('./webpack.production')
@@ -54,7 +56,8 @@ const commonConfig = (isProduction) => {
                 }
               }
             }
-          ]
+          ],
+          sideEffects: true
         },
         {
           test: /\.less$/i,
@@ -72,7 +75,8 @@ const commonConfig = (isProduction) => {
               }
             },
             'less-loader'
-          ]
+          ],
+          sideEffects: true
         },
         {
           test: /\.(png|jpe?g|gif)$/,
@@ -129,6 +133,14 @@ const commonConfig = (isProduction) => {
       }),
       new DefinePlugin({
         BASE_URL: '"./"'
+      }),
+      new PurgeCSSWebpackPlugin({
+        paths: glob.sync(`${resolveApp('src')}/**/*`, { nodir: true }),
+        safelist() {
+          return {
+            standard: ['body', 'html']
+          }
+        }
       })
     ],
     performance: false

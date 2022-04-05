@@ -5,3 +5,7 @@ body {
 .title {
   user-select: none;
 }
+
+.hh {
+  color: red;
+}

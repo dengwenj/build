@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 // import App from './test/react'
 import App from './test/ts'
 
+import './test/test'
 
 const message = 'dengwenjie'
 console.log(message)
