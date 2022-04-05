@@ -2,7 +2,6 @@ const { merge } = require('webpack-merge')
 const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgeCSSWebpackPlugin = require('purgecss-webpack-plugin')
 const glob = require('glob')
@@ -116,24 +115,24 @@ const commonConfig = (isProduction) => {
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: 'react app for dengwj',
-        template: resolveApp('public/index.html')
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: resolveApp('public'),
-            globOptions: {
-              // 要忽略的文件
-              ignore: [
-                "**/index.html"
-              ]
+        template: resolveApp('public/index.html'),
+        minify: isProduction ? {
+          removeComments: true,
+          removeRedundantAttributes: true, 
+          removeEmptyAttributes: true, 
+          collapseWhitespace: true,
+          minifyCSS: true, 
+          minifyJS: {
+            mangle: {
+              toplevel: true 
             }
           }
-        ]
+        } : false
       }),
       new DefinePlugin({
         BASE_URL: '"./"'
       }),
+      // 对 css tree shaking
       new PurgeCSSWebpackPlugin({
         paths: glob.sync(`${resolveApp('src')}/**/*`, { nodir: true }),
         safelist() {
