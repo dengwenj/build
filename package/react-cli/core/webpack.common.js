@@ -13,7 +13,8 @@ const commonConfig = {
   entry: resolveApp('index.js'),
   output: {
     filename: 'bundle.js',
-    path: resolveApp('dist')
+    path: resolveApp('dist'),
+    publicPath: '/'
   },
   resolve: {
     fallback: {
@@ -120,6 +121,7 @@ const commonConfig = {
 module.exports = function (env) {
   const isProduction = env.production
   const config = isProduction ? production : development
+  process.env.NODE_ENV = isProduction ? 'production' : 'development'
 
   return merge(commonConfig, config)
 }

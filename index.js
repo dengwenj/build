@@ -4,7 +4,8 @@ import { name1 } from './test/dwj'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './test/react'
+// import App from './test/react'
+import App from './test/ts'
 
 
 const message = 'dengwenjie'
