@@ -18,6 +18,10 @@ const commonConfig = {
   resolve: {
     fallback: {
       path: require.resolve("path-browserify") 
+    },
+    extensions: ['.js', '.ts', '.json', '.jsx', '.tsx'],
+    alias: {
+      '@': resolveApp('src')
     }
   },
   plugins: [
