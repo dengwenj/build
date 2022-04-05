@@ -2,6 +2,11 @@ import './test/index.css'
 import img1 from './test/我在人间凑数的日子.jpeg'
 import { name1 } from './test/dwj'
 
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './test/react'
+
+
 const message = 'dengwenjie'
 console.log(message)
 
@@ -19,3 +24,5 @@ const foo = () => {
 foo()
 
 console.log(name1);
+
+ReactDOM.render(<App />, document.getElementById('root'))
