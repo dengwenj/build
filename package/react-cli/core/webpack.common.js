@@ -24,6 +24,27 @@ const commonConfig = {
       '@': resolveApp('src')
     }
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require('postcss-preset-env')
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({

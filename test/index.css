@@ -1,0 +1,7 @@
+body {
+  background-color: skyblue;
+}
+
+.title {
+  user-select: none;
+}
