@@ -13,7 +13,7 @@ const development = require('./webpack.development')
 const commonConfig = (isProduction) => {
   return {
     target: ['browserslist'],
-    entry: resolveApp('index.js'),
+    entry: resolveApp('src/index.js'),
     output: {
       filename: 'js/[name].[chunkhash:6].bundle.js',
       chunkFilename: 'js/[name].[contenthash:6].chunk.js',
