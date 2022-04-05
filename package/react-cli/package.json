@@ -10,7 +10,7 @@
     "build": "webpack --config ./core/webpack.common.js --env production",
     "start": "webpack serve --config ./core/webpack.common.js --env development"
   },
-  "author": "",
+  "author": "dengwj",
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
