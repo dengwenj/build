@@ -27,6 +27,15 @@ const commonConfig = {
   module: {
     rules: [
       {
+        test: /\.(jsx?|tsx?)$/i,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
+      },
+      {
         test: /\.css$/i,
         use: [
           'style-loader',
