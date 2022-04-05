@@ -1,3 +1,4 @@
+const fs = require('fs')
 const { merge } = require('webpack-merge')
 const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -9,6 +10,11 @@ const glob = require('glob')
 const resolveApp = require('../utils/paths')
 const production = require('./webpack.production')
 const development = require('./webpack.development')
+
+const existsDwjConfig = () => {
+  const dwjConfigpath = process.env.preProcess + '/dwj.config.js'
+  if (fs.existsSync(dwjConfigpath)) return require(dwjConfigpath)
+}
 
 const commonConfig = (isProduction) => {
   return {
@@ -151,5 +157,5 @@ module.exports = function (env) {
   const config = isProduction ? production : development
   process.env.NODE_ENV = isProduction ? 'production' : 'development'
 
-  return merge(commonConfig(isProduction), config)
+  return merge(commonConfig(isProduction), config, existsDwjConfig() || {})
 }
