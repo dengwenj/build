@@ -1,3 +1,5 @@
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
+
 module.exports = {
   mode: 'development',
   bail: false,
@@ -10,4 +12,7 @@ module.exports = {
     compress: true, // 开启 gzip ，性能压缩
     historyApiFallback: true
   },
+  plugins: [
+    new ReactRefreshWebpackPlugin()
+  ]
 }
