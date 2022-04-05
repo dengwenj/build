@@ -2,6 +2,9 @@
   "name": "react-cli",
   "version": "1.0.0",
   "description": "a react-cli package",
+  "bin": {
+    "dwj-react": "./index.js"
+  },
   "main": "index.js",
   "scripts": {
     "build": "webpack --config ./core/webpack.common.js --env production",
@@ -10,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "webpack": "^5.71.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4",

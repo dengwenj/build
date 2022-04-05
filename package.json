@@ -1,0 +1,20 @@
+{
+  "name": "mybuild",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "dwj-react build",
+    "start": "dwj-react start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dengwenj/build.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dengwenj/build/issues"
+  },
+  "homepage": "https://github.com/dengwenj/build#readme"
+}
