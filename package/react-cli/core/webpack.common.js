@@ -42,7 +42,44 @@ const commonConfig = {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.less$/i,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  require('postcss-preset-env')
+                ]
+              }
+            }
+          },
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        type: 'asset',
+        generator: {
+          filename: 'img/[name].[hash:6][ext]'
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 100 * 1024
+          }
+        }
+      },
+      {
+        test: /\.(woff|eot|ttf|woff2)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'font/[name].[hash:6][ext]'
+        }
+      },
     ]
   },
   plugins: [
@@ -67,7 +104,8 @@ const commonConfig = {
     new DefinePlugin({
       BASE_URL: '"./"'
     })
-  ]
+  ],
+  performance: false
 }
 
 module.exports = function (env) {

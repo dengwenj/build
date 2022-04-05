@@ -1,3 +1,4 @@
 module.exports = {
-  mode: 'production'
+  mode: 'production',
+  bail: true
 }

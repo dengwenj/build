@@ -1,5 +1,6 @@
 module.exports = {
   mode: 'development',
+  bail: false,
   devtool: 'cheap-module-source-map',
   devServer: {
     hot: 'only',
