@@ -1,8 +1,9 @@
 const { merge } = require('webpack-merge')
+const { DefinePlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const { DefinePlugin } = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const resolveApp = require('../utils/paths')
 const production = require('./webpack.production')
@@ -12,7 +13,7 @@ const commonConfig = {
   target: ['browserslist'],
   entry: resolveApp('index.js'),
   output: {
-    filename: 'bundle.js',
+    filename: 'js/bundle.js',
     path: resolveApp('dist'),
     publicPath: '/'
   },
@@ -91,6 +92,24 @@ const commonConfig = {
         }
       },
     ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false
+      })
+    ],
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          filename: 'js/[id]_vendors.js',
+          priority: -10
+        },
+      }
+    },
+    // runtimeChunk: 'single',
   },
   plugins: [
     new CleanWebpackPlugin(),
