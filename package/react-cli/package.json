@@ -1,6 +1,6 @@
 {
   "name": "dwj-react-build",
-  "version": "2.0.2",
+  "version": "2.1.1",
   "description": "a react-cli package",
   "bin": {
     "dwj-react": "./index.js"
@@ -9,6 +9,15 @@
   "scripts": {
     "build": "node scripts/build.js",
     "start": "node scripts/start.js"
+  },
+  "keywords": ["webpack", "react-cli"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dengwenj/build.git"
+  },
+  "homepage": "https://github.com/dengwenj",
+  "bugs": {
+    "url": "https://github.com/dengwenj/build/issues"
   },
   "author": "dengwj",
   "license": "ISC",
