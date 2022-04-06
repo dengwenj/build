@@ -1,6 +1,6 @@
 {
   "name": "dwj-react-build",
-  "version": "1.1.0",
+  "version": "2.0.1",
   "description": "a react-cli package",
   "bin": {
     "dwj-react": "./index.js"
