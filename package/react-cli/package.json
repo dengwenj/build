@@ -7,8 +7,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config ./core/webpack.common.js --env production",
-    "start": "webpack serve --config ./core/webpack.common.js --env development"
+    "build": "node scripts/build.js",
+    "start": "node scripts/start.js"
   },
   "author": "dengwj",
   "license": "ISC",
