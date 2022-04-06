@@ -1,7 +1,6 @@
 const fs = require('fs')
 const { merge } = require('webpack-merge')
 const { DefinePlugin } = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgeCSSWebpackPlugin = require('purgecss-webpack-plugin')
@@ -118,7 +117,6 @@ const commonConfig = (isProduction) => {
       runtimeChunk: 'single',
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: 'react app for dengwj',
         template: resolveApp('public/index.html'),
