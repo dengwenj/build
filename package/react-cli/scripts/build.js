@@ -6,10 +6,16 @@ const compiler = webpack(config({
   production: true
 }))
 
-compiler.run((err, stats) => {
-  if (err) {
-    console.log(err)
-    return
-  }
-  // console.log(stats)
-})
+const runBuild = () => {
+  console.log('Packing...')
+
+  compiler.run((err, stats) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    console.log('Packaged successfully...')
+    // console.log(stats)
+  })
+}
+runBuild()
